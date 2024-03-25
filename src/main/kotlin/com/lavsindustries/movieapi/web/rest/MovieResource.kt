@@ -4,6 +4,7 @@ import com.lavsindustries.movieapi.service.MovieService
 import com.lavsindustries.movieapi.dtos.MovieDTO
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -34,4 +35,8 @@ class MovieResource(
     @PutMapping("/movies")
     fun updateMovie(@RequestBody movieDTO: MovieDTO) =
         ResponseEntity(movieService.updateMovie(movieDTO), HttpStatus.OK)
+
+    @DeleteMapping("/movies/{id}")
+    fun deleteMovie(@PathVariable id: Int) =
+        ResponseEntity(movieService.deleteMovie(id), HttpStatus.OK)
 }
